@@ -1,0 +1,27 @@
+#!/usr/bin/gnuplot
+
+# Wyłączenie legendy 
+set key off
+
+# Tytuł wykresu
+set title "f(x)=sin(x)"
+
+# Zasięg na osi X
+set xrange [-pi:pi]
+
+# Ustawienie opisu osi X
+set xlabel "Radiany"
+
+# Podpisanie osi
+set xtics ("-{/Symbol p}" -pi, "0.5{/Symbol p}" -pi/2, "0" 0, "0.5{/Symbol p}" pi/2, "{/Symbol p}" pi)
+
+# Rysowanie osi X
+set xzeroaxis
+
+# Zasięg na osi Y
+set yrange [-1:1]
+
+# Rysowanie sinusa
+plot sin(x)
+
+pause -1

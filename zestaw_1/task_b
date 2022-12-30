@@ -1,0 +1,21 @@
+#!/usr/bin/gnuplot
+
+set multiplot layout 3 , 1
+set key off 
+
+set xrange [57:129]
+
+set ylabel "BTC"
+plot "data/btc.data" with lines lw 3 lt 2
+
+set ylabel "ETH"
+plot "data/eth.data" with lines lw 3 lt 1
+
+set xtics
+set ylabel "SIN"
+set xlabel "Dni"
+plot sin(x)
+
+unset multiplot
+
+pause -1
