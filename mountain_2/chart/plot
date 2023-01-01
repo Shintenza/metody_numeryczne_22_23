@@ -1,0 +1,4 @@
+#!/usr/bin/gnuplot
+
+plot "data_gauss-seidel" with lines lw 2 lt 1, "data_gradient" with lines lw 2 lt 2
+pause -1

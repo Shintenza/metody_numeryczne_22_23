@@ -2,7 +2,11 @@
 
 void gauss_seidel_adjusted(std::vector<double> a1, std::vector<double> a2, std::vector<double> a3,
                            std::vector<double> a4, std::vector<double> a5, std::vector<double> &x, std::vector<double> e) {
-    for (int i = 0; i < 100; i++) {
+    double diff = 1; 
+    double tmp = 0;
+    std::vector<double> tmpX(x);
+
+    while (std::fabs(diff-tmp) > EPS){
         x[0] = (e[0] - x[1] - x[4]) / a3[0];
 
         for (int j = 1; j < 4; j++) {
@@ -18,5 +22,10 @@ void gauss_seidel_adjusted(std::vector<double> a1, std::vector<double> a2, std::
         }
 
         x[127] = (e[127] - x[123] - x[126]) / a3[127];
+        tmp  = diff;
+        diff = vector_norm(vector_diff(x,tmpX));
+
+        std::copy(x.begin(), x.end(), std::back_inserter(tmpX));
+        // std::cout<<std::setprecision(10)<<diff<<std::endl;
     }
 }

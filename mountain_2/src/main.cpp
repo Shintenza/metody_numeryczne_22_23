@@ -20,7 +20,7 @@ int main() {
     std::vector<double> x(128, STARTING_VALUE);
     gauss_seidel_adjusted(a1, a2, a3, a4, a5, x, e);
     // std::cout<<"======A======"<<std::endl;
-    display_vector(x);
+    // display_vector(x);
 
     std::vector<double> x1(128, STARTING_VALUE);
     conjugate_gradient_method(a1, a2, a3, a4, a5, x1, e);

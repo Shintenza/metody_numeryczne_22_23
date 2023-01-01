@@ -4,10 +4,12 @@ void conjugate_gradient_method(std::vector<double> a1, std::vector<double> a2, s
                                std::vector<double> a4, std::vector<double> a5, std::vector<double> &x, std::vector<double> e) {
     std::vector<double> r = vector_diff(e, optimised_mul(a1, a2, a3, a4, a5, x));
     std::vector<double> p = r;
+    std::vector<double> tmpX(x);
 
     double alpha = 0.;
     double beta = 0.;
     int counter = 0; 
+    double diff;
     
     while (vector_norm(r) > EPS) {
         counter++;
@@ -20,5 +22,8 @@ void conjugate_gradient_method(std::vector<double> a1, std::vector<double> a2, s
         r = r_k;
         p = p_k;
         x = x_k;
+        diff = vector_norm(vector_diff(x, tmpX));
+        std::copy(x.begin(), x.end(), std::back_inserter(tmpX));
+        // std::cout<<std::setprecision(10)<<diff<<std::endl;
     }
 }
