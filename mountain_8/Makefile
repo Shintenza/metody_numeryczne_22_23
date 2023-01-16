@@ -1,7 +1,7 @@
 CC = g++
 CFLAGS = -Wall -std=c++11
 
-NAME = zadanie8G
+NAME = 8G
 OBJ_DIR = obj
 SRC_DIR = src
 BIN_DIR = bin
@@ -12,18 +12,20 @@ BINARIES = $(addprefix $(BIN_DIR)/, $(OUT))
 DEPS = 
 DEPS_OBJ = $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(DEPS)))
 DEPS_INC = $(addprefix $(INC_DIR)/, $(addsuffix .h, $(DEPS)))
+TEMPLATES = linspace
+TEMPLATES_INC = $(addprefix $(INC_DIR)/, $(addsuffix .h, $(TEMPLATES)))
 
 .PRECIOUS: $(OBJ_DIR)/%.o
-.PHONY: clean all structure run
+.PHONY: clean all run
 all: $(BINARIES)
 
 $(BIN_DIR)/%: $(OBJ_DIR)/%.o $(DEPS_OBJ) | structure
 	$(CC) $(CFLAGS) -o $@ $^
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp $(INC_DIR)/%.h 
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp $(INC_DIR)/%.h $(TEMPLATES_INC)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp $(TEMPLATES_INC)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 run: all
