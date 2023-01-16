@@ -22,22 +22,22 @@ int main() {
     Eigen::MatrixXd I(5, 5);
     I.setIdentity();
 
-    double tau = 0.3819;
+    double tau = 0.38197;
 
-    auto resolvent = A - tau * I;
-    auto resolvent_inverse = resolvent.inverse();
+    Eigen::MatrixXd resolvent = A - tau * I;
+    Eigen::PartialPivLU<Eigen::Ref<Eigen::MatrixXd> > lu(resolvent);
+
 
     double l = 0;
     double l_next = 0;
 
     do {
-        z = resolvent_inverse * y;
+        z = lu.solve(y);
         double z_norm = z.norm();
         y = z / z_norm;
 
         l = l_next;
         l_next = z_norm;
     } while (std::fabs(l_next - l > 0.000001));
-
     std::cout << z << "\n";
 }
