@@ -8,11 +8,9 @@ void conjugate_gradient_method(std::vector<double> a1, std::vector<double> a2, s
 
     double alpha = 0.;
     double beta = 0.;
-    int counter = 0; 
     double diff;
     
     while (vector_norm(r) > EPS) {
-        counter++;
         alpha = vector_mul(r, r) / vector_mul(p, optimised_mul(a1, a2, a3, a4, a5, p));
         std::vector<double> r_k = vector_diff(r, vector_mul(alpha, optimised_mul(a1, a2, a3, a4, a5, p)));
         beta = (vector_mul(r_k, r_k) / vector_mul(r, r));

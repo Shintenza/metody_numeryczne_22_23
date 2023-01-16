@@ -40,6 +40,7 @@ std::vector<double> vector_diff(std::vector<double> v1, std::vector<double> v2) 
     }
     return result;
 }
+// funkcja mnożenia macierzy z zadania przez wektor dostosowana do jej struktury
 std::vector<double> optimised_mul(std::vector<double> a1, std::vector<double> a2, std::vector<double> a3,
                                   std::vector<double> a4, std::vector<double> a5, std::vector<double> v) {
     std::vector<double> result(128, 0);
