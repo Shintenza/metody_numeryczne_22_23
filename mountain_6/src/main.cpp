@@ -39,5 +39,6 @@ int main() {
         l = l_next;
         l_next = z_norm;
     } while (std::fabs(l_next - l > 0.000001));
-    std::cout << z << "\n";
+
+    std::cout << y << "\n";
 }
